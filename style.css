@@ -1,10 +1,45 @@
- body {
-background-color: #ffddf7 ;  
-background-image: radial-gradient(circle,#000 5px, transparent 5px), radial-gradient(circle, #000 5px, transparent 5px);
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  border: 25px solid #000;
+  padding: 40px;
+  margin: 0 auto;
+  max-width: calc(100% +80px);
+  min-height: 100vh;
+  background-color: #ffddf7;
+  background-image: radial-gradient(circle,#000 5px, transparent 5px),
+                    radial-gradient(circle, #000 5px, transparent 5px);
   background-position: 0 0, 15px 30px;
   background-size: 30px 60px;
-font-family: "Kaisei Decol", "Tangerine", cursive;
-overflow-x: hidden;
+  font-family: "Kaisei Decol", "Tangerine", cursive;
+  box-shadow:
+    0 0 60px rgba(0, 0, 0, 0.5),
+    0 0 120px rgba(0, 0, 0, 0.45),
+    0 0 200px rgba(0, 0, 0, 0.4),
+    0 0 300px rgba(0, 0, 0, 0.35),
+    inset 0 0 80px rgba(0, 0, 0, 0.4),
+    inset 0 0 160px rgba(0, 0, 0, 0.3),
+    inset 0 0 240px rgba(0, 0, 0, 0.2),
+    inset 0 0 320px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .kaisei-decol-regular {
@@ -64,11 +99,11 @@ overflow-x: hidden;
   background-color: white;
   padding: 20px;
   border-radius: 12px;
-  left: 100px; /* 左からの距離 */ 
+  position:absolute;
+  left: 15px; /* 左からの距離 */ 
   top: 50px;
   gap: 12px;
   font-size: 14px;
-  position:absolute;
   padding-top: 20px;
   border: 2px solid #000;
 }
@@ -202,8 +237,9 @@ overflow-x: hidden;
   width: 500px;
   height: 500px;
   position: relative;
+  transform: translateX(-180px);
   top:0px;
-  left:-150px;
+  left:0;
   object-fit: cover;
   border: 3px solid #f3cce3;
 }
@@ -219,9 +255,11 @@ overflow-x: hidden;
   font-weight: bold;
   color:  #000;
   font-family: "Kaisei Decol", serif;
-  position: relative;  /* 親要素に対して相対位置 */
-  top: -230px;    
-  left:-180px;
+  position:relative;  /* 親要素に対して相対位置 */
+  top: -180px;    
+  left:-25px;
+  background: #ffddf7;
+  border-radius:12px;
 text-shadow:
     0 0 10px rgba(255, 255, 255, 1),      /* 内側: 完全な白光 */
     0 0 20px rgba(255, 255, 255, 0.95),   /* 中間: 強い白 */
@@ -233,21 +271,22 @@ text-shadow:
   
 
   margin-bottom: 20px; /* ← これが超重要！ */
-  margin-left: 50px;   /* 必要なら調整 */
+  margin-left: -100px;   /* 必要なら調整 */
 }
 
 .message-box {
   position: relative;  
   top:0;
   left:0;
+  transform: translateX(-50px);
   background-color: white;
   padding: 40px;
   border-radius: 12px;
-  width: 350px; /* ← 左右に30pxずつ余白 */
+  width: 80%; 
   margin: 0 auto;        /* ← 上下40px、左右は自動で中央寄せ */
-  margin-left: -30px;
+  margin-left: 0px;
   margin-top:-140px;
-  max-width: 900px;         /* ← 横長にしたい最大幅（調整OK） */
+  max-width: 500px;         /* ← 横長にしたい最大幅（調整OK） */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-size: 15px;
   line-height: 1.6;
@@ -258,7 +297,7 @@ text-shadow:
 .ribbon {
   position: absolute;
   top: -110px;      /* ボックスの上に少しはみ出す */
-  right: -250px;    /* ボックスの右に少しはみ出す */
+  right: -55%;  /* ボックスの右に少しはみ出す */
   width: 500px;     /* リボンのサイズ調整（必要に応じて） */
 }
 
@@ -270,27 +309,33 @@ text-shadow:
   position:relative;
  top:0px;
   left:0px;   
-  width: 650px;     /* ← フレームのサイズに合わせて調整 */
+  transform: translateX(-250px) translateY(50px) ; 
+  width: 900px;     /* ← フレームのサイズに合わせて調整 */
   height: 250px;
   margin: 30px auto 0; /* 中央に配置 */
-  margin-left:-180px;
+  margin-left:0px;
   margin-top:10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px;
+  padding: 200px;
   text-align: center;
 }
 
 .frame-text {
-  display: block;   
-  margin-top:-25px;    /* ← flex を無効化して縦並びに戻す */
+  display: block;
+  margin-top: -25px;
+  width: 90%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 .frame-text p {
   display: block;        /* 念のため縦並びを保証 */
-  margin: 6px 0;
-  font-size:30px
+  margin: 10px 0;
+  font-size:20px
 }
 
 .title-highlight {
@@ -306,4 +351,69 @@ text-shadow:
   display: inline-block;
   padding: 2px 6px;
   border-radius: 4px;
+}
+
+/* スマホ用レイアウト調整 */
+@media (max-width: 768px) {
+
+  /* 全体の余白調整 */
+  body {
+    padding: 0 10px;
+  }
+
+  /* 左側のSNSリンクを上にまとめる */
+  .main-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-links {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .sns-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* タイトル部分を中央寄せ */
+  .center-content {
+    text-align: center;
+  }
+
+  .title-card img.ribbon-base {
+    width: 90%;
+  }
+
+  /* プロフィール部分を縦並びに */
+  .profile-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-img {
+    width: 70%;
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .profile-wrapper {
+    width: 100%;
+  }
+
+  /* メッセージボックスの幅調整 */
+  .message-box {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* フレームボックスも幅をスマホに合わせる */
+  .frame-box {
+    width: 100%;
+    margin-top: 15px;
+  }
 }
